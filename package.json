@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:mobile": "ng serve --host 192.168.1.194",
-    "build": "ng build --base-href /linkdecobro/ --configuration production",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
