@@ -1,0 +1,92 @@
+@import "/src/assets/scss/colors.scss";
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  transform: scale(2.2);
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: #fff;
+  color: #d3d3d5;
+  border: #d3d3d5 solid 1px;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #7234e9;
+  color: #fff;
+  border: #fff 1px solid;
+  box-shadow: 0 0 0 1px rgba(114, 52, 233, 0.65);
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-done {
+  background-color: rgba(114, 52, 233, 0.2);
+  color: #fff;
+  border: none;
+}
+
+::ng-deep .mat-step-icon .mat-icon {
+  font-size: 10px !important;
+  height: 10px !important;
+  width: 10px !important;
+}
+
+::ng-deep .mat-step-icon-content {
+  font-size: 8px !important;
+}
+
+::ng-deep .mat-step-header:hover {
+  background-color: white !important;
+}
+
+::ng-deep .mat-step-header.cdk-program-focused {
+  background-color: white;
+}
+
+::ng-deep .mat-step-header.cdk-mouse-focused {
+  background-color: white;
+}
+
+::ng-deep .mat-step-header.cdk-focused {
+  background-color: white;
+}
+
+::ng-deep .mat-step-text-label {
+  margin-top: 10px;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  min-width: 5px !important;
+}
+
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+::ng-deep .mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: $app-color-primary;
+}
+
+::ng-deep .mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary {
+  color: $app-color-primary;
+}
+
+::ng-deep .mat-stroked-button:not(.mat-button-disabled) {
+  border-color: $app-color-primary;
+}
+
+.mat-column-value {
+  text-align: right;
+  justify-content: flex-end;
+}
