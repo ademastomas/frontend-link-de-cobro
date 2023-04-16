@@ -1,0 +1,473 @@
+<ng-container *ngIf="viewportSize$ | async as viewportSize">
+  <div class="app-center">
+    <div class="main-logo-container">
+      <a href="https://www.ekiipago.com/"
+        ><img src="/assets/ekiipago-logo-negro.png" alt=""
+      /></a>
+    </div>
+
+    <div
+      class="main-content-container"
+      [ngClass]="{ 'app-not-so-full-width': viewportSize === 'XSmall' }"
+    >
+      <mat-card class="app-shadow main-card-content">
+        <mat-stepper #stepper class="mt10" labelPosition="bottom">
+          <ng-template matStepperIcon="edit" let-index="index">{{
+            index + 1
+          }}</ng-template>
+
+          <mat-step>
+            <ng-template matStepLabel
+              ><span *ngIf="viewportSize === 'notXSmall'"
+                >Realiza tu pago móvil</span
+              ></ng-template
+            >
+
+            <div *ngIf="viewportSize === 'XSmall'" class="app-h-center">
+              <p class="app-text-small m0">Realiza tu pago móvil</p>
+            </div>
+
+            <div class="main-card-title-container">
+              <p class="main-card-title">
+                Paga el monto
+                <span class="app-text-highlight">EXACTO CON CÉNTIMOS</span> a la
+                siguiente cuenta desde el banco de tu preferencia:
+              </p>
+            </div>
+
+            <div class="app-h-center">
+              <table
+                mat-table
+                [dataSource]="paymentDescription"
+                class="main-table"
+              >
+                <!-- Tag Column -->
+                <ng-container matColumnDef="tag">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.tag }}
+                  </td>
+                </ng-container>
+
+                <!-- Value Column -->
+                <ng-container matColumnDef="value">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.value }}
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+
+            <div class="app-h-end m10">
+              <span class="app-text-small"
+                >Dispones del día de hoy para realizar el pago</span
+              >
+            </div>
+
+            <div class="app-h-center mt30">
+              <button
+                mat-flat-button
+                color="primary"
+                matStepperNext
+                class="app-button"
+              >
+                Siguiente
+              </button>
+            </div>
+          </mat-step>
+
+          <mat-step [stepControl]="customerFormGroup">
+            <ng-template matStepLabel
+              ><span *ngIf="viewportSize === 'notXSmall'"
+                >Ingresa tus datos</span
+              ></ng-template
+            >
+
+            <div *ngIf="viewportSize === 'XSmall'" class="app-h-center">
+              <p class="app-text-small m0">Ingresa tus datos</p>
+            </div>
+
+            <div class="main-card-title-container">
+              <p class="main-card-title">
+                Ingresa los datos del emisor del pago
+              </p>
+            </div>
+
+            <div>
+              <form [formGroup]="customerFormGroup" class="main-form">
+                <div class="main-form-control-container">
+                  <div
+                    class="main-form-control-left-half"
+                    [ngClass]="{ 'app-half-width': viewportSize === 'XSmall' }"
+                  >
+                    <mat-label class="main-form-control-input-label"
+                      >Nombre</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <input matInput formControlName="surname" required />
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.surname.hasError(
+                            'required'
+                          )
+                        "
+                        >Ingresa tu nombre</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.surname.hasError(
+                            'minlength'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.surname.hasError(
+                            'maxlength'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.surname.hasError('pattern')
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+
+                  <div class="main-form-control-right-half">
+                    <mat-label class="main-form-control-input-label"
+                      >Apellido</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <input matInput formControlName="lastname" required />
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.lastname.hasError(
+                            'required'
+                          )
+                        "
+                        >Ingresa tu apellido</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.lastname.hasError(
+                            'minlength'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.lastname.hasError(
+                            'maxlength'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.lastname.hasError(
+                            'pattern'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="main-form-control-container">
+                  <div class="main-form-control-left-one-quarter">
+                    <mat-label class="main-form-control-input-label"
+                      >Número de teléfono</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <mat-select matInput formControlName="phoneCode" required>
+                        <mat-option
+                          *ngFor="let operator of operators"
+                          [value]="operator.code"
+                          >{{ operator.code }}</mat-option
+                        >
+                      </mat-select>
+
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.phoneCode.hasError(
+                            'required'
+                          )
+                        "
+                        >Selecciona tu operadora</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+
+                  <div class="main-form-control-right-three-quarter">
+                    <mat-label
+                      class="main-form-control-input-label main-form-control-input-label-no-visible"
+                      >.</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <input matInput formControlName="phoneNumber" required />
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.phoneNumber.hasError(
+                            'required'
+                          )
+                        "
+                        >Ingresar tu número de teléfono</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.phoneNumber.hasError(
+                            'pattern'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="main-form-control-container">
+                  <div class="main-form-control-left-one-quarter">
+                    <mat-label class="main-form-control-input-label"
+                      >Cédula de identidad</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <mat-select
+                        matInput
+                        formControlName="nationality"
+                        required
+                      >
+                        <mat-option
+                          *ngFor="let nationality of nationalities"
+                          [value]="nationality.code"
+                          >{{ nationality.code }}</mat-option
+                        >
+                      </mat-select>
+
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.nationality.hasError(
+                            'required'
+                          )
+                        "
+                        >Selecciona tu nacionalidad</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+
+                  <div class="main-form-control-right-three-quarter">
+                    <mat-label
+                      class="main-form-control-input-label main-form-control-input-label-no-visible"
+                      >.</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <input matInput formControlName="id" required />
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.id.hasError('required')
+                        "
+                        >Ingresa tu cédula de identidad</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.id.hasError('pattern')
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="main-form-control-container">
+                  <div class="main-form-control-left-half">
+                    <mat-label class="main-form-control-input-label"
+                      >Banco emisor</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <mat-select matInput formControlName="bank" required>
+                        <mat-option
+                          *ngFor="let bank of banks"
+                          [value]="bank.code"
+                          >{{ bank.name }}</mat-option
+                        >
+                      </mat-select>
+
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.bank.hasError('required')
+                        "
+                        >Selecciona el banco emisor</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="main-form-control-container">
+                  <div class="main-form-control-left-half">
+                    <mat-label class="main-form-control-input-label"
+                      >Nro. referencia</mat-label
+                    >
+                    <mat-form-field
+                      class="app-full-width mb-5"
+                      appearance="outline"
+                    >
+                      <input matInput formControlName="reference" required />
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.reference.hasError(
+                            'required'
+                          )
+                        "
+                        >ⓘ Ingresa el número completo de la referencia dada por
+                        tu banco</mat-error
+                      >
+                      <mat-error
+                        *ngIf="
+                          customerFormGroup.controls.reference.hasError(
+                            'pattern'
+                          )
+                        "
+                        >Formato Inválido</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="app-h-center mt30">
+                  <button
+                    mat-stroked-button
+                    color="primary"
+                    matStepperPrevious
+                    class="app-button mr5"
+                  >
+                    Atrás
+                  </button>
+
+                  <button
+                    mat-flat-button
+                    color="primary"
+                    matStepperNext
+                    class="app-button ml5"
+                    [disabled]="customerFormGroup.invalid"
+                    (click)="validatePayment()"
+                  >
+                    Verificar pago
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-step>
+
+          <mat-step>
+            <ng-template matStepLabel
+              ><span *ngIf="viewportSize === 'notXSmall'"
+                >Confirma</span
+              ></ng-template
+            >
+
+            <div *ngIf="viewportSize === 'XSmall'" class="app-h-center">
+              <p class="app-text-small m0">Confirma</p>
+            </div>
+
+            <div
+              *ngIf="state === 'waiting'"
+              class="app-center app-card-content"
+            >
+              <mat-spinner [diameter]="70" class="m20"></mat-spinner>
+              <h2 class="app-text-big app-text-center">
+                Verificando tu pago...
+              </h2>
+            </div>
+
+            <div
+              *ngIf="state === 'success'"
+              class="app-center app-card-content"
+            >
+              <div class="mt30">
+                <img src="/assets/success.png" alt="" />
+              </div>
+
+              <div>
+                <h2 class="app-text-big app-text-center mt40 mb40 ml0 mr0">
+                  ¡Gracias por tu compra!
+                </h2>
+              </div>
+
+              <div>
+                <a href="https://ekiipago.com">
+                  <button mat-flat-button color="primary" class="app-button">
+                    Listo
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            <div *ngIf="state === 'fail'" class="app-center app-card-content">
+              <div class="mt30">
+                <img src="/assets/fail.png" alt="" />
+              </div>
+
+              <div>
+                <h2 class="app-text-big app-text-center mt40 m430 ml0 mr0">
+                  Hubo un problema al validar su pago
+                </h2>
+              </div>
+
+              <div class="app-three-quarter-width">
+                <p class="app-text-center">
+                  En caso de haber realizado el pago y no haber podido validarlo
+                  exitosamente, comunícate a través de <b>info@ekiipago.com</b>
+                </p>
+              </div>
+
+              <div class="app-h-center mt30">
+                <button
+                  mat-flat-button
+                  color="primary"
+                  matStepperPrevious
+                  class="app-button"
+                  (click)="stepperGoInitialStep()"
+                >
+                  Intentar nuevamente
+                </button>
+              </div>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>

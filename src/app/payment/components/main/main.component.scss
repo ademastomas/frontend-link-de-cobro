@@ -1,0 +1,99 @@
+@import "/src/assets/scss/margin.scss";
+@import "/src/assets/scss/colors.scss";
+@import "/src/assets/scss/material-custom.scss";
+
+.main-logo-container {
+  margin: 40px 40px 20px;
+}
+
+.main-content-container {
+  margin: 20px 20px 40px 20px;
+}
+
+.main-card-content {
+  min-height: 70vh;
+}
+
+.main-card-title-container {
+  margin: 25px 10px;
+  width: 95%;
+}
+
+.main-card-title {
+  text-align: center;
+  margin: 0;
+}
+
+.main-table {
+  border-spacing: 0 2px;
+  border: 1px solid rgba(35, 35, 45, 0.2);
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.main-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-form-control-container {
+  display: flex;
+  column-gap: 15px;
+}
+
+.main-form-control-left-half {
+  flex-grow: 1;
+}
+
+.main-form-control-right-half {
+  flex-grow: 1;
+  overflow-x: clip;
+}
+
+.main-form-control-left-one-quarter {
+  flex-grow: 0;
+  width: 25%;
+}
+
+.main-form-control-right-three-quarter {
+  flex-grow: 3;
+  overflow-x: clip;
+}
+
+.main-form-control-input-label {
+  display: block;
+  font-size: 0.9em;
+  min-width: max-content;
+  margin-top: 7px;
+}
+
+.main-form-control-input-label-no-visible {
+  visibility: hidden;
+}
+
+tr.mat-row:last-child {
+  td.mat-cell {
+    border-bottom: none;
+  }
+}
+
+td.mat-cell:last-child {
+  font-weight: 500;
+}
+
+@media only screen and (max-device-width: 599.98px) {
+  ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
+  .mat-vertical-stepper-header {
+    padding-bottom: 10px !important;
+  }
+
+  ::ng-deep .mat-horizontal-content-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  table {
+    margin: 0 !important;
+  }
+}

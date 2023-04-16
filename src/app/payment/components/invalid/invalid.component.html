@@ -1,0 +1,26 @@
+<ng-container *ngIf="viewportSize$ | async as viewportSize">
+  <div class="app-center app-card-wrapper">
+    <div>
+      <a href="https://www.ekiipago.com/"
+        ><img src="/assets/ekiipago-logo-negro.png" alt=""
+      /></a>
+    </div>
+
+    <div
+      class="m20"
+      [ngClass]="{ 'app-not-so-full-width': viewportSize === 'XSmall' }"
+    >
+      <mat-card class="app-shadow"
+        ><div class="app-center app-card-content">
+          <img [src]="getStatusImgSrc()" alt="" />
+
+          <div class="app-text-center invalid-text-content">
+            <h2>¡Ups!</h2>
+            <h1>{{ getStatusTitle() }}</h1>
+            <p>{{ getStatusMsg() }}</p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>

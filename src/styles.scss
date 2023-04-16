@@ -1,0 +1,94 @@
+@use "@angular/material" as mat;
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+$public-sans-typography: mat.define-typography-config(
+  $font-family: '"Public Sans", sans-serif',
+);
+
+@include mat.typography-hierarchy($public-sans-typography);
+
+$app-theme: mat.define-light-theme(
+  (
+    typography: $public-sans-typography,
+  )
+);
+
+@include mat.all-component-themes($app-theme);
+
+@import "assets/scss/normalize.scss";
+
+@import "assets/scss/margin.scss";
+@import "assets/scss/colors.scss";
+
+.app-background {
+  background-color: $app-color-background;
+}
+
+.app-not-so-full-width {
+  width: 95vw;
+}
+
+.app-full-width {
+  width: 100%;
+}
+
+.app-three-quarter-width {
+  width: 75%;
+}
+
+.app-quarter-width {
+  width: 25%;
+}
+
+.app-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-h-center {
+  display: flex;
+  justify-content: center;
+}
+
+.app-h-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-shadow {
+  box-shadow: 0px 7px 30px 0px $app-color-shadow !important;
+}
+
+.app-button {
+  padding: 5px 40px !important;
+  font-weight: 600;
+}
+
+.app-text-center {
+  text-align: center;
+}
+
+.app-text-highlight {
+  color: $app-color-primary;
+  font-weight: 600;
+}
+
+.app-text-small {
+  font-size: 14px;
+}
+
+.app-text-big {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.app-card-wrapper {
+  min-height: 100vh;
+}
+
+.app-card-content {
+  min-width: 35vw;
+  min-height: 40vh;
+}

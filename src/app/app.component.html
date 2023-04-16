@@ -1,0 +1,19 @@
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="viewportSize$ | async as viewportSize">
+  <div *ngIf="loading" class="app-center app-card-wrapper">
+    <div [ngClass]="{ 'app-not-so-full-width': viewportSize === 'XSmall' }">
+      <mat-card class="app-shadow">
+        <div class="app-center app-card-content">
+          <mat-spinner [diameter]="70" class="m20"></mat-spinner>
+
+          <div class="m20">
+            <a href="https://www.ekiipago.com/"
+              ><img src="/assets/ekiipago-logo-negro.png" alt=""
+            /></a>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>
