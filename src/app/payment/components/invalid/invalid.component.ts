@@ -31,13 +31,13 @@ export class InvalidComponent implements OnInit {
 
     switch (this.status) {
       case 'expired':
-        imgSrc = '/assets/expired.png';
+        imgSrc = '/frontend-link-de-cobro/assets/expired.png';
         break;
       case 'already-payed':
-        imgSrc = '/assets/already-payed.png';
+        imgSrc = '/frontend-link-de-cobro/assets/already-payed.png';
         break;
       default:
-        imgSrc = '/assets/404.png';
+        imgSrc = '/frontend-link-de-cobro/assets/404.png';
     }
 
     return imgSrc;
