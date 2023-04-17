@@ -138,13 +138,13 @@
                             'maxlength'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Nombre inválido</mat-error
                       >
                       <mat-error
                         *ngIf="
                           customerFormGroup.controls.surname.hasError('pattern')
                         "
-                        >Formato Inválido</mat-error
+                        >Nombre inválido</mat-error
                       >
                     </mat-form-field>
                   </div>
@@ -172,7 +172,7 @@
                             'minlength'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Apellido inválido</mat-error
                       >
                       <mat-error
                         *ngIf="
@@ -188,7 +188,7 @@
                             'pattern'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Apellido inválido</mat-error
                       >
                     </mat-form-field>
                   </div>
@@ -246,7 +246,7 @@
                             'pattern'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Número de teléfono inválido</mat-error
                       >
                     </mat-form-field>
                   </div>
@@ -304,7 +304,7 @@
                         *ngIf="
                           customerFormGroup.controls.id.hasError('pattern')
                         "
-                        >Formato Inválido</mat-error
+                        >Cédula inválida</mat-error
                       >
                     </mat-form-field>
                   </div>
@@ -362,7 +362,7 @@
                             'pattern'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Referencia inválida</mat-error
                       >
                     </mat-form-field>
                   </div>
@@ -459,7 +459,6 @@
                 <button
                   mat-flat-button
                   color="primary"
-                  matStepperPrevious
                   class="app-button"
                   (click)="stepperGoInitialStep()"
                 >

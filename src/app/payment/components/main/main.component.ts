@@ -68,8 +68,6 @@ export class MainComponent implements OnInit {
   defaultOperator = operators[0];
   nationalities = nationalities;
   defaultNationality = nationalities[0];
-  stepperState: string = '';
-  stepperCompleted: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -143,11 +141,6 @@ export class MainComponent implements OnInit {
     this.resetForm();
   }
 
-  public setStepDone() {
-    this.stepperCompleted = true;
-    this.stepperState = 'done';
-  }
-
   private prepareHeaders(paymentAuth: any): any {
     const headers = {
       'x-client-key': paymentAuth.key,
@@ -171,13 +164,6 @@ export class MainComponent implements OnInit {
   }
 
   private resetForm() {
-    this.customerFormGroup.reset();
-    Object.keys(this.customerFormGroup.controls).forEach((key) => {
-      this.customerFormGroup.controls[
-        key as keyof typeof this.customerFormGroup.controls
-      ].setErrors(null);
-    });
-
     this.customerFormGroup.controls['bank'].setValue(this.defaultBank.code);
     this.customerFormGroup.controls['phoneCode'].setValue(
       this.defaultOperator.code
