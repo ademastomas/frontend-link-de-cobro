@@ -63,7 +63,6 @@ export class MainComponent implements OnInit {
   paymentAuth: any;
   viewportSize$: any;
   banks = banks;
-  defaultBank = banks[0];
   operators = operators;
   defaultOperator = operators[0];
   nationalities = nationalities;
@@ -92,7 +91,6 @@ export class MainComponent implements OnInit {
 
       console.log(this.paymentAuth);
 
-      this.customerFormGroup.controls['bank'].setValue(this.defaultBank.code);
       this.customerFormGroup.controls['phoneCode'].setValue(
         this.defaultOperator.code
       );
@@ -124,8 +122,6 @@ export class MainComponent implements OnInit {
 
       this.state = paymentValidated.errorCode === '00' ? 'success' : 'fail';
 
-      this.resetForm();
-
       return;
     } catch (e) {
       console.log(e);
@@ -139,6 +135,16 @@ export class MainComponent implements OnInit {
     this.stepper.previous();
 
     this.resetForm();
+  }
+
+  public isAnyFormControlEmpty() {
+    let empty = false;
+
+    Object.keys(this.customerFormGroup.controls).forEach((control) => {
+      empty = empty || this.customerFormGroup.get(control)?.value === null;
+    });
+
+    return empty;
   }
 
   private prepareHeaders(paymentAuth: any): any {
@@ -164,7 +170,10 @@ export class MainComponent implements OnInit {
   }
 
   private resetForm() {
-    this.customerFormGroup.controls['bank'].setValue(this.defaultBank.code);
+    Object.keys(this.customerFormGroup.controls).forEach((control) => {
+      this.customerFormGroup.get(control)?.setErrors(null);
+    });
+
     this.customerFormGroup.controls['phoneCode'].setValue(
       this.defaultOperator.code
     );

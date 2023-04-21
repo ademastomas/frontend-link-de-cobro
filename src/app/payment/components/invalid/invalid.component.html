@@ -2,9 +2,7 @@
   <div class="app-center app-card-wrapper">
     <div>
       <a href="https://www.ekiipago.com/"
-        ><img
-          src="/frontend-link-de-cobro/assets/ekiipago-logo-negro.png"
-          alt=""
+        ><img src="/frontend-link-de-cobro/assets/ekiipago-logo.svg" alt=""
       /></a>
     </div>
 
@@ -14,7 +12,10 @@
     >
       <mat-card class="app-shadow"
         ><div class="app-center app-card-content">
-          <img [src]="getStatusImgSrc()" alt="" />
+          <div class="invalid-point-img-container">
+            <div class="invalid-point-img"></div>
+          </div>
+          <img style="margin-top: 10%" [src]="getStatusImgSrc()" alt="" />
 
           <div class="app-text-center invalid-text-content">
             <h2>¡Ups!</h2>

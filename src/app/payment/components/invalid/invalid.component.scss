@@ -1,3 +1,20 @@
 .invalid-text-content {
   width: 70%;
+  margin-bottom: 10%;
+}
+
+.invalid-point-img-container {
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  top: 0px;
+}
+
+.invalid-point-img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-image: url("../../../../frontend-link-de-cobro/assets/bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
 }

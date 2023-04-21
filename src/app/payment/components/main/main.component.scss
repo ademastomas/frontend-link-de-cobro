@@ -72,6 +72,16 @@
   visibility: hidden;
 }
 
+.main-msg-container {
+  display: flex;
+  align-items: center;
+}
+
+.main-info-msg {
+  font-size: 75%;
+  color: $app-color-gray;
+}
+
 tr.mat-row:last-child {
   td.mat-cell {
     border-bottom: none;

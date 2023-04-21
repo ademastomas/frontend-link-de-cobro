@@ -2,9 +2,7 @@
   <div class="app-center">
     <div class="main-logo-container">
       <a href="https://www.ekiipago.com/"
-        ><img
-          src="/frontend-link-de-cobro/assets/ekiipago-logo-negro.png"
-          alt=""
+        ><img src="/frontend-link-de-cobro/assets/ekiipago-logo.svg" alt=""
       /></a>
     </div>
 
@@ -130,7 +128,7 @@
                             'minlength'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Nombre inválido</mat-error
                       >
                       <mat-error
                         *ngIf="
@@ -180,7 +178,7 @@
                             'maxlength'
                           )
                         "
-                        >Formato Inválido</mat-error
+                        >Apellido inválido</mat-error
                       >
                       <mat-error
                         *ngIf="
@@ -319,7 +317,15 @@
                       class="app-full-width mb-5"
                       appearance="outline"
                     >
-                      <mat-select matInput formControlName="bank" required>
+                      <mat-select
+                        matInput
+                        formControlName="bank"
+                        placeholder="Selecciona el banco emisor"
+                        required
+                      >
+                        <mat-option [value]="null" [disabled]="true"
+                          >Selecciona el banco emisor</mat-option
+                        >
                         <mat-option
                           *ngFor="let bank of banks"
                           [value]="bank.code"
@@ -353,9 +359,18 @@
                             'required'
                           )
                         "
-                        >ⓘ Ingresa el número completo de la referencia dada por
-                        tu banco</mat-error
                       >
+                        <div class="main-msg-container">
+                          <img
+                            class="mr5"
+                            src="/frontend-link-de-cobro/assets/error-msg.svg"
+                            alt=""
+                          /><span
+                            >Ingresa el número completo de la referencia dada
+                            por tu banco</span
+                          >
+                        </div>
+                      </mat-error>
                       <mat-error
                         *ngIf="
                           customerFormGroup.controls.reference.hasError(
@@ -365,6 +380,22 @@
                         >Referencia inválida</mat-error
                       >
                     </mat-form-field>
+                    <div
+                      *ngIf="
+                        customerFormGroup.controls.reference.valid ||
+                        customerFormGroup.controls.reference.pristine
+                      "
+                      class="main-msg-container mt-10"
+                    >
+                      <img
+                        class="ml15 mr5"
+                        src="/frontend-link-de-cobro/assets/info-msg.svg"
+                        alt=""
+                      /><span class="main-info-msg"
+                        >Ingresa el número completo de la referencia dada por tu
+                        banco</span
+                      >
+                    </div>
                   </div>
                 </div>
 
@@ -383,7 +414,9 @@
                     color="primary"
                     matStepperNext
                     class="app-button ml5"
-                    [disabled]="customerFormGroup.invalid"
+                    [disabled]="
+                      customerFormGroup.invalid || isAnyFormControlEmpty()
+                    "
                     (click)="validatePayment()"
                   >
                     Verificar pago
@@ -419,7 +452,7 @@
               class="app-center app-card-content"
             >
               <div class="mt30">
-                <img src="/frontend-link-de-cobro/assets/success.png" alt="" />
+                <img src="/frontend-link-de-cobro/assets/success.svg" alt="" />
               </div>
 
               <div>
@@ -439,7 +472,7 @@
 
             <div *ngIf="state === 'fail'" class="app-center app-card-content">
               <div class="mt30">
-                <img src="/frontend-link-de-cobro/assets/fail.png" alt="" />
+                <img src="/frontend-link-de-cobro/assets/fail.svg" alt="" />
               </div>
 
               <div>
