@@ -2,6 +2,7 @@
 
 ::ng-deep .mat-horizontal-stepper-header {
   pointer-events: none !important;
+  width: 33%;
 }
 
 ::ng-deep .mat-step-header .mat-step-icon {
@@ -11,12 +12,35 @@
 ::ng-deep .mat-step-header .mat-step-icon {
   background-color: #fff;
   color: #d3d3d5;
+  z-index: 2;
+  overflow: hidden;
   border: #d3d3d5 solid 1px;
+}
+
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header:not(:last-child)::after {
+  border-top-width: 0px !important;
+
+  border-style: dotted;
+  border-color: #d3d3d5;
+  margin-right: -3%;
+}
+
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header::before {
+  border-top-width: 0px !important;
+  border-style: dotted;
+  border-color: #d3d3d5;
+  margin-left: -3%;
 }
 
 ::ng-deep .mat-step-header .mat-step-icon-selected,
 .mat-step-header .mat-step-icon-state-edit {
   background-color: #7234e9;
+  z-index: 2;
+  overflow: hidden;
   color: #fff;
   border: #fff 1px solid;
   box-shadow: 0 0 0 1px rgba(114, 52, 233, 0.65);
@@ -25,6 +49,8 @@
 ::ng-deep .mat-step-header .mat-step-icon-state-done {
   background-color: rgba(114, 52, 233, 0.2);
   color: #fff;
+  z-index: 2;
+  overflow: hidden;
   border: none;
 }
 
@@ -59,7 +85,7 @@
 }
 
 ::ng-deep .mat-stepper-horizontal-line {
-  min-width: 5px !important;
+  display: none;
 }
 
 ::ng-deep
