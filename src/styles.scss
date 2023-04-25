@@ -93,6 +93,16 @@ $app-theme: mat.define-light-theme(
 }
 
 .app-card-content {
-  min-width: 35vw;
-  min-height: 40vh;
+  min-height: 50vh;
+}
+
+.app-card-container {
+  width: 750px;
+  min-height: 60vh;
+
+}
+@media only screen and (max-width: 750px) {
+  .app-card-container {
+    width: auto;
+  }
 }

@@ -11,6 +11,7 @@
 }
 
 .main-card-content {
+  width: 630px;
   min-height: 70vh;
 }
 
@@ -107,3 +108,10 @@ td.mat-cell:last-child {
     margin: 0 !important;
   }
 }
+
+@media only screen and (max-width: 630px) {
+  .main-card-content {
+    width: auto;
+  }
+}
+

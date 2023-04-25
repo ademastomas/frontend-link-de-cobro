@@ -3,7 +3,7 @@
 <ng-container *ngIf="viewportSize$ | async as viewportSize">
   <div *ngIf="loading" class="app-center app-card-wrapper">
     <div [ngClass]="{ 'app-not-so-full-width': viewportSize === 'XSmall' }">
-      <mat-card class="app-shadow">
+      <mat-card class="app-shadow app-card-container">
         <div class="app-center app-card-content">
           <mat-spinner [diameter]="70" class="m20"></mat-spinner>
 
