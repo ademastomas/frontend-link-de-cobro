@@ -127,7 +127,7 @@ export class VerifyPaymentLinkService {
       },
       {
         tag: 'Banco Destino',
-        value: this.getBankName(paymentLinkVerified.commerceBank),
+        value: this.getBankName(paymentLinkVerified.commerceBankCode),
       },
       { tag: 'Comercio', value: paymentLinkVerified.commerceName },
       {
